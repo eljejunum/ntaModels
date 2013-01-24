@@ -936,4 +936,50 @@ if (isset($_GET['activated']) && $_GET['activated']){
 	include_once(TEMPLATEPATH . "/default_settings.php");
     wp_redirect(admin_url("themes.php?page=functions.php&activate=true"));
 }
+
+//Include meta box plugin
+include 'demo/demo.php';
+
+//Register multiple featured images for models
+if (class_exists('MultiPostThumbnails')) {
+	new MultiPostThumbnails(
+		array(
+			'label' => 'Fashion Image',
+			'id' => 'fashion-img',
+			'post_type' => 'models'
+		)
+	);
+	new MultiPostThumbnails(
+		
+		array(
+			'label' => 'Fitness Image',
+			'id' => 'fitness-img',
+			'post_type' => 'models'
+		)
+	);
+	new MultiPostThumbnails(
+		array(
+			'label' => 'Lifestyle Image',
+			'id' => 'lifestyle-img',
+			'post_type' => 'models'
+		)
+	);
+	add_image_size('model-thumbnail', 150, 150);
+}
+
+/**
+//Add search bar to nav
+add_filter('wp_nav_menu_items','add_search_box', 10, 2);
+function add_search_box($items, $args) {
+
+        ob_start();
+        get_search_form();
+        $searchform = ob_get_contents();
+        ob_end_clean();
+
+        $items .= '<li>' . $searchform . '</li>';
+
+    return $items;
+}
+**/
 ?>

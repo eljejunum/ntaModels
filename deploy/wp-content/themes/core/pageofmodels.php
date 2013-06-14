@@ -140,7 +140,7 @@ function checkCategories(){
 		'post_type' => 'models',
 		'category__and' => checkCategories(),
 		'posts_per_page' => 50,
-		'orderby' => 'title',
+		'orderby' => 'menu_order',
 		'order' => 'ASC'
 	);
 
